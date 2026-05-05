@@ -108,17 +108,21 @@ export function InvoiceDocument({ invoice }: Props) {
         <section className="py-6 border-b border-slate-200">
           <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-slate-500 mb-3">Payment instructions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 rounded-lg p-4 text-sm">
-            <div>
-              <p className="font-semibold mb-1">Pay by check to:</p>
-              <p>{invoice.paymentInstructions.check.payeeName}</p>
-              <p className="text-slate-600">{invoice.paymentInstructions.check.address}</p>
-            </div>
-            <div>
-              <p className="font-semibold mb-1">Pay by ACH:</p>
-              <p>Routing: {invoice.paymentInstructions.ach.routing}</p>
-              <p>Account: {invoice.paymentInstructions.ach.account}</p>
-              <p>Memo: {invoice.paymentInstructions.ach.memo}</p>
-            </div>
+            {invoice.paymentInstructions.check && (
+              <div>
+                <p className="font-semibold mb-1">Pay by check to:</p>
+                <p>{invoice.paymentInstructions.check.payeeName}</p>
+                <p className="text-slate-600">{invoice.paymentInstructions.check.address}</p>
+              </div>
+            )}
+            {invoice.paymentInstructions.ach && (
+              <div>
+                <p className="font-semibold mb-1">Pay by ACH:</p>
+                <p>Routing: {invoice.paymentInstructions.ach.routing}</p>
+                <p>Account: {invoice.paymentInstructions.ach.account}</p>
+                <p>Memo: {invoice.paymentInstructions.ach.memo}</p>
+              </div>
+            )}
           </div>
         </section>
       )}
